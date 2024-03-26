@@ -137,7 +137,79 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# from collections import defaultdict
+# import heapq
+### solution 2: Floyd + 矩阵
+# class Graph:
+#     def __init__(self, n, edges):
+#         self.n = n
 
+#         self.conns = [ [float('inf')]*n for _ in range(n) ]
+#         for i in range(n):
+#             self.conns[i][i] = 0
+#         for edge in edges:
+#             self.conns[edge[0]][edge[1]] = edge[2]
+        
+#         for k in range(n):
+
+#             for i in range(n):
+#                 for j in range(n):
+#                     if (i==j) or (self.conns[i][k]==float('inf')) or (self.conns[k][j]==float('inf')): continue
+#                     self.conns[i][j] = min(self.conns[i][j], self.conns[i][k]+self.conns[k][j])
+
+
+#     def addEdge(self, edge):
+#         x,y,c = edge
+#         if c >= self.conns[x][y]:
+#             return
+        
+#         self.conns[x][y] = c
+#         for i in range(self.n):
+#             for j in range(self.n):
+#                 if (i==j): continue
+#                 self.conns[i][j] = min(self.conns[i][j], self.conns[i][x]+c+self.conns[y][j])
+
+#     def shortestPath(self, node1, node2):
+        
+#         ans = self.conns[node1][node2]
+        
+#         if ans < float('inf'):
+#             return ans
+        
+#         return -1
+
+
+
+### solution 1: Dijkstra + 小根堆 heapq
+# class Graph:
+#     def __init__(self, n, edges):
+#         self.n = n
+#         self.conns = defaultdict(dict)
+#         for edge in edges:
+#             self.conns[edge[0]][edge[1]] = edge[2]
+
+#     def addEdge(self, edge):
+#         self.conns[edge[0]][edge[1]] = edge[2]
+
+#     def shortestPath(self, node1, node2):
+#         tmp = [[0,node1]]
+#         dis = [ float('inf') ] * self.n
+#         searched = [False] * self.n
+
+#         while tmp:
+#             d,cur = heapq.heappop(tmp)
+#             if node2 == cur:
+#                 return d
+
+#             if searched[cur]:
+#                 continue
+#             searched[cur] = True
+
+#             for next,c in self.conns[cur].items():
+#                 if ((not searched[next]) and (d+c < dis[next])):
+#                     dis[next] = d+c
+#                     heapq.heappush(tmp, [d+c,next])
+#         return -1
 
 ##################################################################################
 ##################################################################################
