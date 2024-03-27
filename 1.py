@@ -127,61 +127,87 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# def maxDistance(self, nums1, nums2):
+#     ### solution 2: 双指针+优化
+#     len1 = len(nums1)
+#     len2 = len(nums2)
+#     ans = 0
 
+#     i,j = 0,0
+#     while (i < len1) and (j < len2):
+#         if nums1[i] > nums2[j]:
+#             i += 1
+#         j += 1  ###保证最大ans窗口移动，小于已有的最大ans无效
+    
+#     return max(j-i-1, ans)
+
+#     ### soltuion 1: 双指针
+#     # len1 = len(nums1)
+#     # len2 = len(nums2)
+#     # ans = 0
+
+#     # i,j = 0,0
+#     # while (i < len1) and (j < len2):
+#     #     if nums1[i] <= nums2[j]:
+#     #         ans = max(j-i, ans)
+#     #         j += 1
+#     #     else:
+#     #         i += 1
+    
+#     # return ans
 
 ##################################################################################
 ##################################################################################
 ##################################################################################
 # from math import inf
-# class Solution:
-#     def countWays(self, ranges):
-#         ### solution 2: flag + 0加
-#         m = int(1e9+7)
+# def countWays(self, ranges):
+#     ### solution 2: flag + 0加
+#     m = int(1e9+7)
 
-#         ranges.sort()
-#         # ranges.sort(key=lambda x : x[0])
+#     ranges.sort()
+#     # ranges.sort(key=lambda x : x[0])
 
-#         num_groups = 0
-#         cur_max = -inf
+#     num_groups = 0
+#     cur_max = -inf
 
-#         for l,r in ranges:
-#             if l > cur_max:
-#                 num_groups += 1
-#             cur_max = max(cur_max, r)
-        
-#         return (1 << num_groups) % m
-        
-        
-#         ### solution 1: flag + n减
-#         # m = int(1e9+7)
-#         # n = len(ranges)
+#     for l,r in ranges:
+#         if l > cur_max:
+#             num_groups += 1
+#         cur_max = max(cur_max, r)
+    
+#     return (1 << num_groups) % m
+    
+    
+#     ### solution 1: flag + n减
+#     # m = int(1e9+7)
+#     # n = len(ranges)
 
-#         # if n < 1:
-#         #     return 0
-#         # if n == 1:
-#         #     return 2
+#     # if n < 1:
+#     #     return 0
+#     # if n == 1:
+#     #     return 2
 
-#         # ranges.sort()
-#         # # ranges.sort(key=lambda x : x[0])
+#     # ranges.sort()
+#     # # ranges.sort(key=lambda x : x[0])
 
-#         # cur_max = -inf
-#         # flag = False
+#     # cur_max = -inf
+#     # flag = False
 
-#         # for i in range(n-1):
-#         #     l1 = ranges[i][0]
-#         #     r1 = ranges[i][1]
-#         #     l2 = ranges[i+1][0]
-#         #     r2 = ranges[i+1][1]
+#     # for i in range(n-1):
+#     #     l1 = ranges[i][0]
+#     #     r1 = ranges[i][1]
+#     #     l2 = ranges[i+1][0]
+#     #     r2 = ranges[i+1][1]
 
-#         #     if (r1 >= l2) or (flag and l2 <= cur_max) :
-#         #         num_groups -= 1
-#         #         flag = True
-#         #         cur_max = max([cur_max, r1, r2])
-#         #     else:
-#         #         flag = False
-#         #         cur_max = -inf
-                
-#         # return 2**num_groups % m
+#     #     if (r1 >= l2) or (flag and l2 <= cur_max) :
+#     #         num_groups -= 1
+#     #         flag = True
+#     #         cur_max = max([cur_max, r1, r2])
+#     #     else:
+#     #         flag = False
+#     #         cur_max = -inf
+            
+#     # return 2**num_groups % m
 
 ##################################################################################
 ##################################################################################
