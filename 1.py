@@ -132,7 +132,56 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# from math import inf
+# class Solution:
+#     def countWays(self, ranges):
+#         ### solution 2: flag + 0加
+#         m = int(1e9+7)
 
+#         ranges.sort()
+#         # ranges.sort(key=lambda x : x[0])
+
+#         num_groups = 0
+#         cur_max = -inf
+
+#         for l,r in ranges:
+#             if l > cur_max:
+#                 num_groups += 1
+#             cur_max = max(cur_max, r)
+        
+#         return (1 << num_groups) % m
+        
+        
+#         ### solution 1: flag + n减
+#         # m = int(1e9+7)
+#         # n = len(ranges)
+
+#         # if n < 1:
+#         #     return 0
+#         # if n == 1:
+#         #     return 2
+
+#         # ranges.sort()
+#         # # ranges.sort(key=lambda x : x[0])
+
+#         # cur_max = -inf
+#         # flag = False
+
+#         # for i in range(n-1):
+#         #     l1 = ranges[i][0]
+#         #     r1 = ranges[i][1]
+#         #     l2 = ranges[i+1][0]
+#         #     r2 = ranges[i+1][1]
+
+#         #     if (r1 >= l2) or (flag and l2 <= cur_max) :
+#         #         num_groups -= 1
+#         #         flag = True
+#         #         cur_max = max([cur_max, r1, r2])
+#         #     else:
+#         #         flag = False
+#         #         cur_max = -inf
+                
+#         # return 2**num_groups % m
 
 ##################################################################################
 ##################################################################################
