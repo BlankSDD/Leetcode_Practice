@@ -117,7 +117,84 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# from math import inf
+# def minimumSum(nums):
+#     ### solution 3: 维护1个栈 + 1个最小值
+#     n = len(nums)
+#     l_v = inf
+    
+#     r_min = [0]*(n-2)
+#     r_v = inf
+#     for k in range(n-1, 1, -1):
+#         r_v = min(r_v, nums[k])
+#         r_min[k-n] = r_v
+    
+#     ans = inf
 
+#     for j in range(1, n-1):
+#         l_v = min(l_v, nums[j-1])
+#         r_v = r_min[j-1]
+#         if (l_v < nums[j]) and (nums[j] > r_v):
+#             ans = min(ans, l_v + nums[j] + r_v)
+    
+#     if ans < inf:
+#         return ans
+#     return -1
+    
+    
+#     ### solution 2: 维护2个栈
+#     # n = len(nums)
+#     # l_min = []
+#     # l_v = inf
+#     # for i in range(n-2):
+#     #     l_v = min(l_v, nums[i])
+#     #     l_min.append(l_v)
+    
+#     # r_min = []
+#     # r_v = inf
+#     # for k in range(n-1, 1, -1):
+#     #     r_v = min(r_v, nums[k])
+#     #     r_min = [r_v] + r_min
+    
+#     # ans = inf
+
+#     # for j in range(1, n-1):
+#     #     if (l_min[j-1] < nums[j]) and (nums[j] > r_min[j-1]):
+#     #         ans = min(ans, l_min[j-1]+nums[j]+r_min[j-1])
+    
+#     # if ans < inf:
+#     #     return ans
+#     # return -1
+    
+#     ### solution 1: 1指针 + 左侧最小值 + 右侧Counter + 右侧最小值
+#     # n = len(nums)
+
+#     # l_min = inf
+
+#     # r_dict = Counter(nums[1:])
+#     # r_list = list(r_dict.keys())
+#     # r_list.sort()
+#     # r_index = 0
+#     # r_min = r_list[r_index]
+
+#     # ans = inf
+
+#     # for j in range(1, n-1):
+#     #     mid = nums[j]
+#     #     l_min = min(l_min, nums[j-1])
+
+#     #     if (mid in r_dict):
+#     #         r_dict[mid] -= 1
+#     #         while r_dict[r_min] == 0:
+#     #             r_index += 1
+#     #             r_min = r_list[r_index]
+        
+#     #     if (l_min < mid) and (mid > r_min):
+#     #         ans = min(ans, l_min + mid + r_min)
+    
+#     # if ans < inf:
+#     #     return ans
+#     # return -1
 
 ##################################################################################
 ##################################################################################
