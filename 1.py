@@ -216,17 +216,105 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# def decodeCiphertext(encodedText, rows):
+#     ### solution 2: list根据等距切片添加
+#     cols = len(encodedText)//rows
+#     ans = ''
+#     for i in range(cols):
+#         ans += encodedText[i::(cols+1)]
+#     return ans.rstrip()
+    
+#     ### solution 1: 遍历每行按每条斜线添加
+#     # cols = len(encodedText)//rows
+#     # ans = ''
+#     # for j in range(cols):
+#     #     for i in range(min(rows, cols-j)):
+#     #         ans += encodedText[i*cols + j+i]
+    
+#     # return ans.rstrip()
 
+##################################################################################
+##################################################################################
+##################################################################################
+# def isValidSerialization(preorder):
+#     ### solution 2: 树结构的 出度 入度
+#     tmp = 1
+#     for p in preorder.split(','):
+#         if tmp <= 0:
+#             return False
+#         tmp -= 1
+#         if p != '#':
+#             tmp += 2
+#     return tmp == 0
+    
+    
+    
+#     ### solution 1: 把叶节点替换成#，从叶节点向上替换，直到根节点被替换成#，堆栈排入即可
+#     # tmp = []
+#     # for p in preorder.split(','):
+#     #     tmp.append(p)
+#     #     while (len(tmp) >= 3) and (tmp[-1] == '#' and tmp[-2] == '#'):
+#     #         if (tmp[-3] == '#') or (tmp[0] == '#'):
+#     #             return False
+#     #         tmp.pop()
+#     #         tmp.pop()
+#     #         tmp.pop()
+#     #         tmp.append('#')
+#     # return tmp == ['#']
 
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# def minimumAddedCoins(coins, target):
+#     ### solution 2: 在coins中遍历+贪心
+#     coins.sort()
+#     n = len(coins)
+#     c = 0
 
+#     reached = 1
+    
+#     ans = 0
+    
+#     while reached <= target:
+#         if (c < n) and (coins[c] <= reached):
+#             reached += coins[c]
+#             c += 1
+#         else:
+#             reached <<= 1
+#             ans += 1
+#     return ans
+    
+    
+#     ### solution 1: dp + 搜索，超时间了
+#     # coins.sort()
+#     # m = min(sum(coins), target)
+#     # dp = [True] + [False] * (target)
 
-##################################################################################
-##################################################################################
-##################################################################################
+#     # for c in coins:
+#     #     for i in range(m, c-1, -1):
+#     #         if (dp[i-c]):
+#     #             dp[i] = True
+    
+#     # unreached = []
+#     # for i,j in enumerate(dp):
+#     #     if not j:
+#     #         unreached.append(i)
+    
+#     # ans = 0
+#     # while unreached:
+#     #     cur = unreached.pop(0)
+#     #     ind = bisect.bisect_left(unreached, 2*cur)
+#     #     unreached = unreached[ind:]
+#     #     ans += 1
 
+#     #     i = len(unreached)-1
+#     #     while i >= 0:
+#     #         nxt = unreached[i]
+#     #         if (nxt <= 2*cur-1) or dp[nxt-cur]:
+#     #             dp[nxt] = True
+#     #             unreached.pop(i)
+#     #         i -= 1
+#     # return ans
 
 ##################################################################################
 ##################################################################################
