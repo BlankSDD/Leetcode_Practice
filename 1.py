@@ -206,12 +206,106 @@
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# 963. 最小面积矩形 II
+# from math import inf
+# from collections import defaultdict
+# def minAreaFreeRect(points):
+#     ### solution 1: 对角线长度相等 + 中心点重合 判断矩形
+#     n = len(points)
+#     if n < 4:
+#         return 0.0
 
+#     def dis(x, y):
+#         return ((x[0]-y[0])**2 + (x[1]-y[1])**2)**(1/2)
+#     def mid(x, y):
+#         return ((x[0]+y[0])/2, (x[1]+y[1])/2)
+
+#     mid_point = defaultdict(list)
+#     for i in range(n-1):
+#         for j in range(i+1, n):
+#             d = dis(points[i], points[j])
+#             mp = mid(points[i], points[j])
+#             mid_point[(d,mp)].append([points[i], points[j]])
+
+#     ans = inf
+#     for _, pps in mid_point.items():
+#         n1 = len(pps)
+#         if n1 < 2:
+#             continue
+#         for i in range(n1-1):
+#             for j in range(i+1, n1):
+#                 ans = min(ans, dis(pps[i][0],pps[j][0])*dis(pps[i][0],pps[j][1]))
+    
+#     return ans if ans < inf else 0.0
 
 ##################################################################################
 ##################################################################################
 ##################################################################################
+# 894. 所有可能的真二叉树
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+# def allPossibleFBT(n):
+#     ### solution 3: dp+循环生成数量变多的子树+创建新的树
+#     if not n%2:
+#         return []
 
+#     dp = [[] for _ in range(n+1)]
+#     dp[1] = [TreeNode()]
+
+#     for i in range(3, n+1, 2):
+#         for j in range(1, i, 2):
+#             for l in dp[j]:
+#                 for r in dp[i-1-j]:
+#                     dp[i].append(TreeNode(0, l, r))
+    
+#     return dp[n]
+
+    
+#     ### solution 2: 递归左右子树的创建+结合根节点创建新的树
+#     # if not n%2:
+#     #     return []
+
+#     # if n == 1:
+#     #     return [TreeNode()]
+
+#     # ans = []
+#     # for i in range(1, n, 2):
+#     #     for l in self.allPossibleFBT(i):
+#     #         for r in self.allPossibleFBT(n-1-i):
+#     #             ans.append(TreeNode(0, l, r))
+    
+#     # return ans
+
+#     ### solution 1: 左右子树遍历+复制
+#     # ans = []
+#     # root = TreeNode()
+
+#     # if not n%2:
+#     #     return []
+#     # elif n < 3:
+#     #     return [root]
+#     # else:
+#     #     root.left = TreeNode()
+#     #     root.right = TreeNode()
+#     #     n -= 3
+    
+#     # def dfs(t, leaves, n):
+#     #     if n >= 2:
+#     #         for i,leave in enumerate(leaves):
+#     #             leave.left = TreeNode()
+#     #             leave.right = TreeNode()
+#     #             dfs(t, [leave.left, leave.right]+leaves[i+1:], n-2)
+#     #             leave.left = None
+#     #             leave.right = None
+#     #     else:
+#     #         ans.append(copy.deepcopy(t))
+    
+#     # dfs(root, [root.left, root.right], n)
+#     # return ans
 
 ##################################################################################
 ##################################################################################
