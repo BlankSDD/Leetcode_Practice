@@ -1,4 +1,4 @@
-# 1535. 找出数组游戏的赢家1542.py
+# 1535. 找出数组游戏的赢家
 
 from typing import List
 
